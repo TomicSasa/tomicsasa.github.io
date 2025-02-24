@@ -3,51 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Time Kill</title>
+    <title>Time Kill Games - 5 minute Mobile Games</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: white;
+        :root {
+            --neon-green: #4cff4c;
+            --cyber-purple: #8a2be2;
+            --dark-bg: #0a0a0a;
+        }
+        
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(45deg, #1a1a1a, #2d2d2d);
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
         .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 0;
+            border-bottom: 3px solid var(--neon-green);
+            margin-bottom: 4rem;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--neon-green), var(--cyber-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(76, 255, 76, 0.3);
+        }
+
+        .game-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 6rem;
+        }
+
+        .screenshots {
+            position: relative;
+            height: 600px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(76, 255, 76, 0.2);
+        }
+
+        .screenshots img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            animation: imageRotate 16s infinite;
+        }
+
+        .screenshots img:nth-child(1) { animation-delay: 0s; }
+        .screenshots img:nth-child(2) { animation-delay: 4s; }
+        .screenshots img:nth-child(3) { animation-delay: 8s; }
+        .screenshots img:nth-child(4) { animation-delay: 12s; }
+
+        @keyframes imageRotate {
+            0%, 25% { opacity: 1; }
+            30%, 100% { opacity: 0; }
+        }
+
+        .game-info {
             display: flex;
-            justify-content: space-around;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, var(--neon-green), #00cc00);
+            color: #000;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 2rem 0;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(76, 255, 76, 0.4);
+        }
+
+        .coming-soon {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 4rem 0;
+            text-align: center;
+            border: 2px solid var(--neon-green);
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .game-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            min-height: 200px;
+            display: flex;
             align-items: center;
-            padding: 50px;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
-        .section {
-            width: 45%;
+
+        .game-card::after {
+            content: "Coming Soon";
+            position: absolute;
+            background: linear-gradient(45deg, var(--cyber-purple), #ff00ff);
+            color: white;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            border-radius: 5px;
+            top: 1rem;
+            right: -2rem;
+            transform: rotate(45deg);
+            width: 120px;
+            text-align: center;
         }
-        img {
-            width: 300px;
-            height: 300px;
-        }
+
         footer {
-            margin-top: 50px;
-            padding: 20px;
-            background-color: #f0f0f0;
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.5);
+            margin-top: 4rem;
+        }
+
+        .contact-link {
+            color: var(--neon-green);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--neon-green);
+        }
+
+        @media (max-width: 768px) {
+            .game-showcase {
+                grid-template-columns: 1fr;
+            }
+            
+            .screenshots {
+                height: 400px;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
     </style>
 </head>
 <body>
-    <h1>Time Kill</h1>
-    <div class="container">
-        <div class="section">
-            <h2>Duel</h2>
-            <img src="duel.png" alt="Duel image">
-            <p>The robot is demanding a duel!</p>
-            <p>Time Kill is the perfect little game for those moments when you just need a quick, fun distraction - waiting for a bus, stuck in a boring meeting, or killing time before class. It’s fast, addictive, and all about speed! Your mission? Tap the robot before the clock hits zero. Every successful hit buys you more time and racks up points, but as you get better, the challenge gets tougher!  </p>
+    <header>
+        <div class="container">
+            <h1>TIME KILL GAMES</h1>
+            <p class="tagline">Your Ultimate 5-Minute Gaming Solution</p>
         </div>
-        <div class="section">
-            <h2>Coming soon!</h2>
-            <p>Stay tuned! A brand-new game is coming very soon. Get ready for an experience like never before!</p>
-        </div>
-    </div>
+    </header>
+
+    <main class="container">
+        <section class="game-showcase">
+            <div class="screenshots">
+                <img src="timekill-duel/images/gameplay.png" alt="Gameplay 1">
+                <img src="timekill-duel/images/shoots.png" alt="Gameplay 2">
+                <img src="timekill-duel/images/start.png" alt="Gameplay 3">
+                <img src="timekill-duel/images/get-ready.png" alt="Gameplay 4">
+                <img src="timekill-duel/images/game-over.png" alt="Gameplay 4">
+            </div>
+            <div class="game-info">
+                <h2>Fast-Paced Robot Duel Action</h2>
+                <p>⚡ Perfect for quick sessions - waiting, commuting, or between tasks<br>
+                🤖 Challenge the rogue AI in intense micro-duels<br>
+                💥 Progressive difficulty that keeps you hooked<br>
+                🕹 Simple controls with depth mastery</p>
+                <a href="https://apps.apple.com/us/app/time-kill-duel/id6742150224" class="cta-button">Download on App Store</a>
+                <p>“The perfect blend of tension and instant gratification”</p>
+            </div>
+        </section>
+
+        <section class="coming-soon">
+            <h2>Upcoming Titles</h2>
+            <p>Prepare for next-level mobile experiences</p>
+            <div class="game-grid">
+                <div class="game-card">Sports</div>
+                <div class="game-card">The Zoo</div>
+            </div>
+        </section>
+    </main>
+
     <footer>
-        &copy; 2025 Time Kill. All rights reserved.
+        <div class="container">
+            <p>Contact us: <a href="mailto:games.timekill@gmail.com" class="contact-link">games.timekill@gmail.com</a></p>
+            <p>&copy; 2024 Time Kill. All rights reserved.</p>
+        </div>
     </footer>
 </body>
 </html>
